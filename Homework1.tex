@@ -6,9 +6,8 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{mathtools}
 \usepackage{amsfonts}
+\usepackage{ stmaryrd }
 \newcommand{\R}{\mathbb{R}}
-
-\addtolength{\topmargin}{+.5in}
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{Taikan Nakada}
@@ -105,47 +104,47 @@ Let
     We want to find a vector $\vec{x}$ that satisfies $A\vec{x}=0:$
     
     \begin{equation*}
-        \vec{x} = \left[
-                    \begin{array}{r}
-                        x_1\\
-                        x_2\\
-                        x_3\\
-                        x_4
-                    \end{array}
-                  \right]
-                = \left[
-                    \begin{array}{r}
-                        x_4\\
-                        -x_4\\
-                        x_4\\
-                        x_4
-                    \end{array}
-                  \right]
-                = x_4 \left[
-                        \begin{array}{r}
-                            1\\
-                            -1\\
-                            1\\
-                            1
-                        \end{array}
-                      \right]
+        \left(
+            \begin{array}{rrrr}
+                1 & 0 & 0 & 1 \\
+                0 & 1 & 0 & -1 \\
+                0 & 0 & 1 & 1 
+            \end{array}
+        \right)\vec{x}=0 \Longrightarrow  
+        \left\{
+            \begin{array}{r}
+                x_1+x_4=0\\
+                x_2-x_4=0\\
+                x_3+x_4=0
+            \end{array}
+        \right\}
+        \Longrightarrow 
+        x_4 \left[
+                \begin{array}{r}
+                    -1\\
+                    1\\
+                    -1\\
+                    1
+                \end{array}
+            \right]
     \end{equation*}
+    
     Therefore, the null space of A is
     
     \begin{equation*}
         NullSpace\left(A\right) = \left\{ \vec{x} \in \R^4 \ : \vec{x} = \left[
             \begin{array}{r}
-                1\\
                 -1\\
                 1\\
+                -1\\
                 1
             \end{array}
         \right], \quad \forall x_4 \in \R^4 
         \right\} = Span\left[
                             \begin{array}{r}
-                                1\\
                                 -1\\
                                 1\\
+                                -1\\
                                 1
                             \end{array}
                         \right]
@@ -220,22 +219,200 @@ Let
         \right)
     \end{equation*}
     
+    and the range space of $A^\top$ is
+    
+    \begin{equation*}
+        RangeSpace\left(A^\top\right) = 
+        Span\left\{
+            \left[
+                \begin{array}{r}
+                    1\\
+                    1\\
+                    -1\\
+                    -1
+                \end{array}
+            \right],
+            \left[
+                \begin{array}{r}
+                    1\\
+                    1\\
+                    1\\
+                    1
+                \end{array}
+            \right],
+            \left[
+                \begin{array}{r}
+                    0\\
+                    1\\
+                    1\\
+                    0
+                \end{array}
+            \right]
+            \right\}
+    \end{equation*}
 
     %%%End Answer%%%
     
     \item Write $b = p + q$ where $p$ is in the null space of $A$ and $Q$ in the range space of $A^\top$.
+    
+    \begin{equation*}
+        b = p + q \Longrightarrow
+        \left(
+            \begin{array}{r}
+                -1\\
+                4\\
+                -1\\
+                2\\
+            \end{array}
+        \right) = 
+        \left(
+            \begin{array}{r}
+                -1\\
+                1\\
+                -1\\
+                1\\
+            \end{array}
+        \right) + 3
+        \left(
+            \begin{array}{r}
+                0\\
+                1\\
+                0\\
+                \frac{1}{3}\\
+            \end{array}
+        \right)
+    \end{equation*}
+    
 \end{enumerate}
 
 \section*{Exercise 2:}
 
 Show that $\| \cdot \|_p$ for $p=1/3$ is not a norm 
 
+%%%Answer%%%
+
+\bigskip
+Assume to the contrary that $\| \cdot \|_p$ for $p=1/3$ on a vector space $V$ : $V \longrightarrow \R^n$, defined as 
+\begin{equation*}
+\| \vec{x}\|_\frac{1}{3} = \left( \sum_{i=1}^n |x_i|^\frac{1}{3} \right)^{3},
+\end{equation*}
+is a norm. Then, it must satisfy nonnegativity, positive homogeneity, and the triangle inequality. 
+Let $\vec{x}, \vec{y} \in V$ where
+\begin{equation*}
+    \vec{x}=\left(
+                \begin{array}{r}
+                    1\\0\\0
+                \end{array}
+            \right) \quad \text { and } \quad
+    \vec{y}=\left(
+                \begin{array}{r}
+                    0\\1\\0
+                \end{array}
+            \right) \quad \text { where } \quad
+    \vec{x}+\vec{y}=\left(
+                \begin{array}{r}
+                    1\\1\\0
+                \end{array}
+            \right).
+\end{equation*}
+Then, by the triangle inequality
+
+\begin{equation}
+    \| \vec{x}+\vec{y}\|_\frac{1}{3} \leq \| \vec{x}\|_\frac{1}{3} + 
+    \| \vec{y}\|_\frac{1}{3}
+\end{equation}
+\begin{equation}
+    \left( \sum_{i=1}^n |x_i+y_i|^\frac{1}{3}\right)^{3} \leq 
+    \left( \sum_{i=1}^n |x_i|^\frac{1}{3}\right)^{3} +
+    \left( \sum_{i=1}^n |y_i|^\frac{1}{3}\right)^{3}
+\end{equation}
+\begin{equation}
+    \left(
+        1^\frac{1}{3} + 1^\frac{1}{3} + 0^\frac{1}{3}
+    \right)^3 \leq
+    \left(
+        1^\frac{1}{3} + 0^\frac{1}{3} + 0^\frac{1}{3}
+    \right)^3 +
+    \left(
+        0^\frac{1}{3} + 1^\frac{1}{3} + 0^\frac{1}{3}
+    \right)^3
+\end{equation}
+\begin{equation}
+    2^3 \leq 1^3 + 1^3
+\end{equation}
+\begin{equation}
+    8 \leq 2 \quad \lightning
+\end{equation}
+This is a contradiction, and thus the triangle inequality is not satisfied. Therefore, $\| \cdot \|_p$ for $p=1/3$ is not a norm.
+%%%End Answer%%%
+
 \section*{Exercise 3:}
 
 Show that for all $x\in\R^n$, $\|x\|_{\infty} \leq \|x\|_2 \leq \sqrt{n}\|x\|_{\infty}$.
 
+%%%Answer%%%
+\bigskip
+
+Let $\vec{x} \in \R^n$ where $\vec{x} = \left(x_1, x_2, ... , x_n \right)$. Define the 2-norm and $\infty$-norm as
+\begin{equation*}
+    \| \vec{x} \|_{\infty} = \max_{i=1,2,\ldots,n} |x_i| \quad \text { and } \quad 
+    \| \vec{x}\|_2 = \left( \sum_{i=1}^n |x_i|^2 \right)^{\frac{1}{2}}.
+\end{equation*}
+We begin by first proving the inequality on the left hand side. 
+\begin{equation}
+    \| \vec{x} \|_{\infty}^2 = \left(\max_{i=1,2,\ldots,n} |x_i|\right)^2 = 
+    \max_{i=1,2,\ldots,n} |x_i|^2 \leq 
+    \sum_{i=1}^n |x_i|^2 =
+    \| \vec{x}\|_2^2 \quad \Longrightarrow \quad
+    \|x\|_{\infty} \leq \|x\|_2
+\end{equation}
+Now we can take on the right hand side.
+\begin{equation}
+    \| \vec{x}\|_2 = 
+    \sqrt{\sum_{i=1}^n |x_i|^2} \leq 
+    \sqrt{\sum_{i=1}^n \| \vec{x} \|_{\infty}^2} =
+    \sqrt{n\| \vec{x} \|_{\infty}^2} =
+    \sqrt{n}\| \vec{x} \|_{\infty} \quad \Longrightarrow \quad
+    \|x\|_2 \leq \sqrt{n}\|x\|_{\infty}
+\end{equation}
+%%%End Answer%%%
+
 \section*{Exercise 4:}
 
 What are the relations between $\|A \|$ and $\|A^\top\|$ for the matrix norms $\|\cdot\|_1, \|\cdot\|_2, \|\cdot\|_{\infty}$? Describe your ideas in a few sentences and consider adding an example or sketch of a proof.
+
+%%%Answer%%%
+\bigskip
+Let us begin by defining each norm for matrix $A \in \R^{mxn}$. $\|\cdot\|_1, \|\cdot\|_2$, and  $\|\cdot\|_{\infty}$ are defined as
+
+\begin{equation*}
+    \| A \|_1 = \max_{j=1,2,\ldots,n} \sum_{i=1}^m |A_{i,j}|,
+\end{equation*}
+\begin{equation*}
+    \|A \|_2 = \sqrt{\lambda_{\max} (A^\top A)} = \sigma_{\max}(A),
+\end{equation*}
+where $\lambda_{\max}$ is the largest eigenvalue and $\sigma_{\max}$ the largest singular value, and
+\begin{equation*}
+    \| A \|_{\infty} = \max_{i=1,2,\ldots,m} \sum_{j=1}^n |A_{i,j}|.
+\end{equation*}
+$\|A \|$ and $\|A^\top\|$ have the same spectral norm because $\|\cdot\|_2$ gives the largest singular value in the matrix. Taking the transpose of the matrix $A$ does not change the values. 
+
+\vspace{5mm}
+
+\noindent Now, conceptually the 1-norm sums every component of each column, that is, it sums all $m$ components in the $j^{th}$ column. Out of the $n$ columns, the norm returns the sum of the column with the greatest sum.
+
+\vspace{5mm}
+
+\noindent The line of attack for the $\infty$-norm is similar, but essentially "in reverse". It sums all $n$ components in the $i^{th}$ row. Out of the $m$ rows, the norm returns the sum of the row with the greatest sum.
+
+\vspace{5mm}
+
+\noindent With the algorithm in mind, it's straightforward to see that 
+\begin{equation*}
+    \| A \|_1 = \| A^\top \|_{\infty} \quad \text { and }\quad 
+    \| A^\top \|_1 = \| A \|_{\infty}.
+\end{equation*}
+
+%%%End Answer%%%
 
 \end{document}
