@@ -1,0 +1,98 @@
+
+
+\usepackage{amssymb, amsmath,amsthm,amstext}
+\usepackage{tikz,pgfplots}
+\usepackage{graphicx}
+\newif\ifsolution
+\newif\ifsolbox
+\setlength{\parskip}{0pt} % 1ex plus 0.5ex minus 0.2ex}
+\setlength{\parindent}{0pt}
+\usepackage[ letterpaper,left=20mm,right=20mm,bottom=20mm ]{geometry}
+\newcommand{\spacer}{\centering{ \begin{minipage}{5mm} \hfill\vspace{8mm} \end{minipage} }}
+\usepackage{algorithm,algorithmic}
+
+\usepackage{enumitem}
+\setitemize[0]{leftmargin=5pt,itemindent=5pt,itemsep=0mm}
+
+
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage[mmddyyyy,hhmmss]{datetime}
+\pagestyle{fancy}
+\rfoot{\footnotesize \today\ at \currenttime}
+\cfoot{}
+\lfoot{}
+\rhead{\theauthor}
+\lhead{Math 347 - Spring 2020 \thetitle}
+\rfoot{\footnotesize \today}
+
+% \usepackage{fullpage}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\lrvec}[1]{\left[ \begin{array}{r} #1 \end{array}\right]}
+\newcommand{\hf}{\frac{1}{2}}
+\newtheorem{ex}{Exercise}
+\newtheorem{sol}{Solution}
+
+\newcommand{\myVec}[1]{\left( \begin{array}{r} #1 \end{array}\right)}
+\newcommand{\myVecT}[1]{\left( \begin{array}{rr} #1 \end{array}\right)^\top}
+\newcommand{\myMatTwo}[1]{\left( \begin{array}{rr} #1 \end{array}\right)}
+
+
+\newcommand{\CF}{\mathcal{F}}
+\newcommand{\CM}{\mathcal{M}}
+\newcommand{\CE}{\mathcal{E}}
+\newcommand{\CI}{\mathcal{I}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\CA}{\mathcal{A}}
+\newcommand{\CO}{\mathcal{O}}
+
+\newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfa}{\mathbf{a}}
+\newcommand{\bfB}{\mathbf{B}}
+\newcommand{\bfC}{\mathbf{C}}
+\newcommand{\bfD}{\mathbf{D}}
+\newcommand{\bfd}{\mathbf{d}}
+\newcommand{\bfG}{\mathbf{G}}
+\newcommand{\bff}{\mathbf{f}}
+
+\newcommand{\bfH}{\mathbf{H}}
+\newcommand{\bfI}{\mathbf{I}}
+\newcommand{\bfX}{\mathbf{X}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+\newcommand{\bfP}{\mathbf{P}}
+\newcommand{\bfp}{\mathbf{p}}
+\newcommand{\bfM}{\mathbf{M}}
+\newcommand{\bfL}{\mathbf{L}}
+\newcommand{\bfU}{\mathbf{U}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfQ}{\mathbf{Q}}
+\newcommand{\bfq}{\mathbf{q}}
+\newcommand{\bfR}{\mathbf{R}}
+\newcommand{\bfT}{\mathbf{T}}
+\newcommand{\bfs}{\mathbf{s}}
+\newcommand{\bfr}{\mathbf{r}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfy}{\mathbf{y}}
+
+
+
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\cond}{\mathrm{cond}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\fl}{\mathrm{fl}}
+
+
+
+\newdimen\iwidth
+\newdimen\iheight
+
+\newcommand{\lrBox}[1]{\fbox{\parbox{\textwidth}{#1}}}
+\newcommand{\reg}[1]{{\normalfont{#1}}}
+\newcommand{\regtt}[1]{{\normalfont{\texttt{#1}}}}
+
