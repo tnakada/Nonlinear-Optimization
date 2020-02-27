@@ -1,0 +1,174 @@
+\documentclass{article}
+
+\input{headerExercises.tex}
+ \solutionfalse
+   % \solutiontrue
+
+
+\title{\\Homework 2: Unconstrained Optimization}
+\author{Taikan Nakada\\ Departments of Math\&CS, Emory University}
+
+\setcounter{ex}{0}
+\setcounter{sol}{0}
+
+\begin{document}
+	
+	This homework is about first-order necessary conditions and the classification of matrices, which were covered in Sections 2.1 and 2.2 of the lecture notes. 
+	
+	\begin{ex}
+			% Beck Exercise 2.17 (i) and (ii). 
+		Compute (and explicitly list) all stationary points of
+		\begin{equation*}
+				f(x) = 4 x_2^3- 12 x_2^2 + 3 x_1^2 x_2.
+		\end{equation*}
+	\end{ex}
+	
+	\bigskip
+	
+	The gradient is 
+	\begin{equation*}
+	    \nabla f(x) = \left[
+	                     \begin{array}{r}
+	                        6x_1 x_2 \\
+	                        12x_2^2 -24x_2 + 3x_1^2
+	                     \end{array}     
+	                  \right]
+	\end{equation*}
+	
+    The stationary points need to satisfy $\nabla f(x) = 0$, which is
+    \begin{equation*}
+        6x_1 x_2 = 0 \quad \text{ and } \quad 
+        12x_2^2 -24x_2 + 3x_1^2 = 0.
+    \end{equation*}
+    
+    The first condition gives two cases:
+    
+    \begin{enumerate}
+            \item ${x_1=0 : }$ The second condition gives
+            \begin{align*}
+                12x_2^2 -24x_2 &= 12\left( x_2^2 -2x_2 \right)\\
+                &= x_2\left( x_2 - 1\right) = 0 
+                \Rightarrow x_2 = 0,1
+            \end{align*}
+            \item ${x_2=0 : }$ The second condition gives
+            \begin{equation*}
+                3 x_1^2 = 0 \Rightarrow x_1 = 1.
+            \end{equation*}
+        \end{enumerate}
+        Thus, the function has stationary points at $(0,0)^\top$ and $(0,1)^\top$.
+        
+        \bigskip
+	
+	\begin{ex}[Beck, Problem 2.7 (i)]
+		Let $A\in\R^{n\times n}$  be symmetric. Show that $A$ is positive semidefinite if and only if there exists a matrix $B \in \R^{n\times n}$ such that $A = B B^\top$.
+	\end{ex}
+	
+	\bigskip
+	
+	$\left( \Longrightarrow \right):$ Assume $A \in\R^{n\times n}$ is symmetric positive semi-definite (spsd). By spectral decomposition, there exists an orthogonal matrix $U$ and a diagonal matrix $D = diag \left( \lambda_1, \lambda_2, ..., \lambda_n \right) \in \R^{n\times n}$ such that $A = UDU^\top$, where the columns of $U$ are the corresponding eigenvectors of the values in $D$. 
+	
+	\medskip
+	
+	A matrix is spsd if and only if the eigenvalues are non-negative, that is, $\lambda \geq 0$. So we can write $D = \sqrt{D}\sqrt{D}$ where $\sqrt{D} = diag \left( \sqrt{\lambda_1}, \sqrt{\lambda_2}, ..., \sqrt{\lambda_n} \right)$. Then, $A = \left( U\sqrt{D} \right) \left( \sqrt{D}U^\top \right)$ where $U\sqrt{D} = B$ and $\sqrt{D}U^\top = B^\top.$ 
+	
+	\medskip
+	
+	Therefore, $A = BB^\top.$
+	
+	\bigskip
+	
+	$\left( \Longleftarrow \right):$ Let $B \in\R^{n\times n}$ and $A = BB^\top$. Then, $\left( \vec {v}^\top B \right) \left( B^\top \vec{v}  \right) = \vec{x}^\top \vec{x} \geq 0$. It follows that $\vec{x}^\top A \vec{x} \geq 0,$ $\forall x \in \R^n$, thus $A$ is spsd. $\qed$
+	
+    \bigskip
+
+	\begin{ex}[Beck, Problem 2.7 (ii)]
+		Let $x\in \R^n$ and let $A\in\R^{n\times n}$  be defined as
+			\begin{equation*}
+				A_{ij} = x_i x_j, \quad i,j=1,2,\ldots,n.
+			\end{equation*}
+		\begin{enumerate}
+			\item Show that $A$ is positive semidefinite.
+			    
+			    \bigskip
+			    
+	            $A \in \R^{n \times n}$ is defined as $A_{ij} = x_i x_j, \quad i,j=1,2,\ldots,n.$ This can be written as 
+			    \begin{equation*} A = 
+			        \begin{pmatrix}
+			            x_{11} & x_{12} & \cdots & x_{1n} \\
+			            x_{21} & x_{22} & \cdots & x_{2n} \\
+			            \vdots & \vdots & & \vdots \\
+			            x_{n1} & x_{n2} & \cdots & x_{nn} \\
+			        \end{pmatrix}.
+			    \end{equation*}
+			    Now, $x_i x_j = x_j x_i$ by the commutative property. Since $A$ is a square matrix and $A = x_i x_j = x_j x_i = A\top$, it is a symmetric matrix. By spectral decomposition any symmetric matrix can be diagonalized, so A can be diagonalized as $U^\top AU = D$. This also leads us to the fact that the eigenvalues of $A$ are always non-negative. By the Eigenvalue Characterization Theorem, $A$ is positive semidefinite iff all its eigenvalues are non-negative. Therefore, $A$ is spsd.
+			
+			\item Show that $A$ is not positive definite for any $x$ when $n>1$.
+			
+			    \bigskip
+			
+			    Assume to the contrary  that $A$ is a positive definite matrix. Let $D_k (A)$ be the determinant of the upper left $k \times k$ submatrix of $A$. By the Principle Minors Criterion, A must satisfy $D_1 (A) > 0, D_2 (A) > 0, ..., D_n (A) > 0$. However, every $A \in \R^{n \times n}$ where $n > 1$ has the submatrix 
+			    \begin{equation*}
+			        \left(
+			        \begin{array}{rr}
+			            1 & 2\\
+			            2 & 4\\
+			        \end{array}
+			        \right),
+			    \end{equation*}
+			    where $D_2 (A) = 0.$ \Lightning This is a contradiction, and $A$ is therefore not positive definite for any $x$ when $n>1$.
+		\end{enumerate}	
+	\end{ex}
+	
+    
+	
+	\begin{ex}[Beck, Problem 2.11]
+	Let $d \in \Delta_n$ ($\Delta_n$ being the unit-simplex). Show that the $n\times n$ matrix $A$ defined by 
+	$$
+	A_{ij} = \begin{cases}
+	d_i - d_i^2, & i = j, \\
+	-d_i d_j, & i \neq j,
+	\end{cases}
+	$$
+	is positive semidefinite.
+	
+	\emph{Hint:} Use Theorem 2.5 from the notes.
+	\end{ex}
+	
+	Define unit simplex as 
+	\begin{equation*}
+	   \Delta_n = \left\{ x \in \R^n_{+} \ : \ \quad \sum_{i=1}^n x_i = 1 \right\}.
+	\end{equation*}
+	Then, the off diagonal elements $-d_i d_j$ for $i \neq j$ are $\leq 0$. For the case of $i = j$, $d_i - d_i^2$ is always $\geq 0$ since $d_i \leq 1$. 
+	
+	Let 
+	\begin{equation*}
+	    d = \left\{d_i, d_j\right\} = \left\{ \frac{1}{n} , \frac{n-1}{n} \right\} \in \Delta_n
+	\end{equation*} be the set of possible elements of $d$. Then, for the diagonal elements when $i = j$ we have that 
+	\begin{align*}
+	    d_i - d_i^2 &= \frac{1}{n} - \left(\frac{1}{n}\right)^2 \\
+	    &= \frac{1}{n} - \frac{1}{n^2} \\
+	    &= \frac{n-1}{n},
+	\end{align*}
+    and the non-diagonal elements for $i \neq j$ are 
+    \begin{align*}
+        -d_i d_j &= -\left(\frac{n-1}{n}\right) \left(\frac{1}{n}\right) \\
+        &= -\frac{n-1}{n^2}. 
+    \end{align*}
+    
+    This holds for an arbitrary $n+1$ since 
+	\begin{align*}
+	    d_i - d_i^2 &= \frac{1}{n+1} - \left(\frac{1}{n+1}\right)^2 \\
+	    &= \frac{1}{n+1} - \frac{1}{\left(n+1\right)^2} \\
+	    &= \frac{\left( n+1\right) - 1}{\left(n+1\right)^2} \\
+	    &= \frac{n}{\left(n+1\right)^2}
+	\end{align*}
+	
+    and the off-diagonals are  
+    \begin{align*}
+        -d_i d_j &= -\left(\frac{\left(n+1\right)-1}{n+1}\right) \left(\frac{1}{n+1}\right) \\
+        &= -\frac{n}{\left(n+1\right)^2}.
+    \end{align*}
+    
+    This shows that $A$ is diagonally dominant since $|A_{i=j}|\geq\sum_{j\neq i} |A_{ij}|$. We have already proved that the diagonal entries are nonnegative. Thus, by Theorem 2.5 $A$ is positive semidefinite.$\qed$ 
+	\end{document}
+	
